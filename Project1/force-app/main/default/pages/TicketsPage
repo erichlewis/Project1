@@ -1,0 +1,57 @@
+<apex:page standardController="Case" recordSetVar="Tickets" lightningStylesheets="true">
+    <h1>
+        Service Cloud
+    </h1>
+    <apex:form >
+        <apex:pageBlock title="Create Ticket">
+            <apex:pageMessages />
+            <apex:pageBlockSection columns="1" >
+                <apex:inputField value="{!Case.ContactId}"/>
+                <apex:inputField value="{!Case.RecordTypeId}"/>
+                <apex:inputField value="{!Case.Subject}"/>
+                <apex:inputField value="{!Case.Web_Comments__c}" label="Comments" />
+                <apex:inputField value="{!Case.CurrencyIsoCode}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="Save"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:form >
+        <apex:pageBlock title="Past Tickets" id="contacts_list">
+            <apex:pageBlockTable value="{!Tickets}" var="tik">
+                <apex:column value="{!tik.CaseNumber}"/>
+                <apex:column value="{!tik.ContactId}"/>
+                <apex:column value="{!tik.Subject}"/>
+                <apex:column value="{!tik.Status}"/>
+                <apex:column value="{!tik.CreatedDate}"/>
+                <apex:column value="{!tik.OwnerId}"/>
+            </apex:pageBlockTable>
+            <table style="width: 100%"><tr>
+                <td>
+                    Page: <apex:outputText value=" {!PageNumber} of {! CEILING(ResultSize / PageSize) }"/>
+                </td>
+                <td align="center">
+                    <apex:commandLink action="{! Previous }" value="« Previous"
+                                      rendered="{! HasPrevious }"/>
+                    <apex:outputText style="color: #ccc;" value="« Previous"
+                                     rendered="{! NOT(HasPrevious) }"/>
+                    &nbsp;&nbsp;
+                    <apex:commandLink action="{! Next }" value="Next »"
+                                      rendered="{! HasNext }"/>
+                    <apex:outputText style="color: #ccc;" value="Next »"
+                                     rendered="{! NOT(HasNext) }"/>
+                </td>
+                <td align="right">
+                    Records per page:
+                    <apex:selectList value="{! PageSize }" size="1">
+                        <apex:selectOption itemValue="5" itemLabel="5"/>
+                        <apex:selectOption itemValue="10" itemLabel="10"/>
+                        <apex:selectOption itemValue="20" itemLabel="20"/>
+                        <apex:actionSupport event="onchange" reRender="contacts_list"/>
+                    </apex:selectList>
+                </td>
+                </tr></table>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
