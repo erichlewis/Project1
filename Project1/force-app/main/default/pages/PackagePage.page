@@ -1,0 +1,15 @@
+<apex:page standardController="Mail__c" extensions="Mail_Extension">
+  <apex:form>
+    <apex:pageBlock title="My Content" mode="edit">
+        <apex:pageBlockButtons>
+            <apex:commandButton value="submit for approval" action="{$!Submit}" />
+        </apex:pageBlockButtons>
+      <apex:pageBlockSection title="My Content Section" columns="2">
+        <apex:inputField value="{!mail__c.Name}"/>
+        <apex:inputField value="{!mail__c.Full_address__c}"/>
+        <apex:inputField value="{!mail__c.createdDate}"/>
+        <apex:inputField value="{!mail__c.Delivery_status__c}"/>
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>
