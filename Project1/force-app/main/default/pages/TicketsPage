@@ -13,7 +13,7 @@
                 <apex:inputField value="{!Case.CurrencyIsoCode}"/>
             </apex:pageBlockSection>
             <apex:pageBlockButtons >
-                <apex:commandButton action="{!save}" value="Save"/>
+                <apex:commandButton action="{!quicksave}" value="Save"/>
             </apex:pageBlockButtons>
         </apex:pageBlock>
     </apex:form>
