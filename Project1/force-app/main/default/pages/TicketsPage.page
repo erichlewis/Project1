@@ -3,11 +3,6 @@
         Service Cloud
     </h1>
     <apex:pageMessages />
-    <apex:tabPanel switchType="client" id="tab1">
-        <apex:tab label="Create Ticket">
-            <apex:include pageName="CreateTicketPage"/>
-        </apex:tab>
-        <apex:tab label="Past Tickets">
             <apex:form >
                 <apex:pageBlock >
                     <apex:panelGrid columns="2">
@@ -18,7 +13,7 @@
                         </apex:selectList>
                     </apex:panelGrid>
                 </apex:pageBlock>
-                <apex:pageBlock title="Past Tickets" id="contacts_list">
+                <apex:pageBlock title="Tickets" id="contacts_list">
                     <apex:pageBlockTable value="{!Tickets}" var="tik" id="ticketTable">
                         <apex:column value="{!tik.CaseNumber}"/>
                         <apex:column value="{!tik.ContactId}"/>
@@ -55,6 +50,4 @@
                         </tr></table>
                 </apex:pageBlock>
             </apex:form>
-        </apex:tab>
-    </apex:tabPanel>
 </apex:page>

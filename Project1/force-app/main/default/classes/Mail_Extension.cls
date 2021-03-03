@@ -1,6 +1,10 @@
 public with sharing class Mail_Extension {
     private final Mail__c mailRec;
+
+
     private ApexPages.StandardSetController mailSetController;
+
+
     public String listView {
         get {
             return listView;
@@ -74,7 +78,6 @@ public with sharing class Mail_Extension {
         }
 
         public Pagereference filterMail(){
-            testMailList = (List<Mail__c>)mailSetController.getRecords();
             if(ListView == 'Delivered'){
                 testMailList = [Select ID, Name, Full_Address__c, createdDate, Delivery_Status__c FROM Mail__c WHERE Name Like :trackingNumber + '%' AND delivery_status__c = :listView];
             } else if (ListView == 'Not Delivered'){

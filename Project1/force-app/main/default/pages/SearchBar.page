@@ -1,32 +1,39 @@
 <apex:page >
     <!-- For Internal Styling -->
     <style type = "text/css">
+    .header{ font-size: 24px; text-align: center; height: 50px; background: lightskyblue; color: gray; font-family:Garamond; }
+    .logo{font-size: 22px; color: white;}
+    
+    
+    
+    .colData {font-size: 14px; font-weight: normal; color: white; text-decoration:none;transition:0.3s;}
+    .colData:hover{text-decoration: underline; color: rgb(255, 255, 251); opacity: 0.6; font-size:16px;}
+    
     .colHeader {font-size: 18px; text-align: left; background: lightskyblue; border: 1px solid black}
-    .colData {font-size: 16px; text-align: left; width: 30%; border: 1px solid black}
+    
     .table {font-size: 16px; text-align: left; width: 100%; border: 1px solid black}
-    .header {font-size: 24px; text-align: center; height: 50px; background: lightskyblue;} 
+     
     </style>
 
     <!-- A toolbar for accessing pages on the site  -->
-    <apex:pageBlock>
+    <apex:pageBlock >
         <apex:toolbar id="PostalToolbar" styleClass="header" contentStyle="header">
-            <apex:outputText value="Postal Service Experience" />
+            <apex:outputText value="Postal Service Experience" styleClass="logo"/>
                 <apex:toolbarGroup itemSeparator="line" id="toobarGroupLinks">
-                    <apex:outputLink styleClass=".colData" value="https://postalexperience-developer-edition.na156.force.com/s/">
+                    <apex:outputLink styleClass="colData"  value="https://postalexperience-developer-edition.na156.force.com/s/">
                         Postal Service
                     </apex:outputLink>
-                    <apex:outputLink value="https://postalexperience-developer-edition.na156.force.com/s/packages">
+                    <apex:outputLink styleClass="colData" value="https://postalexperience-developer-edition.na156.force.com/s/packages">
                         Packages
                     </apex:outputLink>
-                    <apex:outputLink value="https://postalexperience-developer-edition.na156.force.com/s/testpage1">
+                    <apex:outputLink styleClass="colData" value="https://postalexperience-developer-edition.na156.force.com/s/testpage1">
                         Tickets
                     </apex:outputLink>
-                    <apex:outputLink value="https://postalexperience-developer-edition.na156.force.com/s/account" title="My Account">
+                    <apex:outputLink styleClass="colData" value="https://postalexperience-developer-edition.na156.force.com/s/account" title="My Account">
                         My Account
                     </apex:outputLink>
                 </apex:toolbarGroup>
                 <apex:toolbarGroup itemSeparator="line" location="right" id="toobarGroupForm">
-
                 </apex:toolbarGroup>
             </apex:toolbar>
         </apex:pageBlock>

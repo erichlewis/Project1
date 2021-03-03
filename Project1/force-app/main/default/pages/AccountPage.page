@@ -1,14 +1,15 @@
 <apex:page standardController="Account" extensions="Account_Extension">
     <apex:form >
-        <apex:pageBlock title="My Account Details" mode="edit">
+        <apex:pageBlock title="My Account Details" mode="edit" id="AccountBlock">
+            
             <apex:pageBlockButtons >
-                <apex:commandButton value="Save" action="{!QuickSave}" />
+                <apex:commandButton value="Save" action="{!QuickSave}"/>
             </apex:pageBlockButtons>
-            <apex:pageBlockSection title="My Content Section" columns="2">
+            <apex:pageBlockSection title="My Account Section" columns="2">
                 <apex:inputField value="{!acct.Name}"/>
-                <apex:inputField value="{!acct.AccountNumber}"/>
-                <apex:inputField value="{!acct.OwnerId}"/>
-                <apex:inputField value="{!acct.Site}"/>
+                <apex:outputField value="{!acct.AccountNumber}"/>
+                <apex:inputField value="{!acct.ShippingStreet}"/>
+                <apex:inputField value="{!acct.phone}"/>
             </apex:pageBlockSection>
         </apex:pageBlock>
     </apex:form>
