@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Only_Mail_Handler_can_update</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT( $Profile.Name  = &quot;Mail Handler&quot;), NOT(ISNEW()))</errorConditionFormula>
+    <errorMessage>Only Mail Handler can update the route information</errorMessage>
+</ValidationRule>

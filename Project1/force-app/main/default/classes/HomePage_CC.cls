@@ -3,7 +3,7 @@ public with sharing class HomePage_CC {
 
 
     public HomePage_CC() {
-        //something may go here
+        //something may go here in a further iteration
     }
 
     //list for mail
@@ -24,6 +24,7 @@ public with sharing class HomePage_CC {
         set;
     }
 
+    //list for 
     public List<TicketWrapper> ticketList {
         get{
             if(ticketList == null){

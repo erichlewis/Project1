@@ -15,7 +15,8 @@
     <style type = "text/css">
         
         .colHeader {font-size: 18px; text-align: left; background: lightskyblue; border: 1px solid black}
-        .colData {font-size: 16px; text-align: left; width: 30%; border: 1px solid black}
+        .colData {font-size: 16px; text-align: center; width: 30%; border: 1px solid black;padding:4px;}
+        .headerStyle{font-weight:bold; padding: 5px; color:rgb(255, 255, 251);letter-spacing:1px; text-align: center;}
         .table {font-size: 16px; text-align: left; width: 100%; border: 1px solid black}
         header {font-size: 24px; text-align: center; height: 100px; background: rgb(59, 78, 243); padding-top: 1px} 
         body {background-color: lightblue;}
@@ -25,22 +26,22 @@
     <!-- Welcome user -->
     <apex:pageBlock title="Welcome back {!$User.LastName}!">
         <br/><br/><br/>
-        <apex:outputText> Recent Shipped Packages</apex:outputText> 
+        <apex:outputText > Recent Shipped Packages</apex:outputText> 
         <!--Ticket Related List -->
         <apex:dataTable value="{!mailList}" var="mail" id="MailTable" styleClass="table" headerClass="colHeader" width="100%">
-            <apex:column headerValue="Package" styleClass="colData">
+            <apex:column headerValue="Package" headerClass="headerStyle" styleClass="colData">
                 <!-- TODO: update this with packaged update page-->
                 <apex:outputLink value="https://postalexperience-developer-edition.na156.force.com/s/packages/record?id={!mail.mailid}">
                 {!mail.name}
                 </apex:outputLink>
             </apex:column>
-            <apex:column headerValue="Address" styleClass="colData">
+            <apex:column headerValue="Address" headerClass="headerStyle" styleClass="colData">
                 {!mail.address}
             </apex:column>
-            <apex:column headerValue="Date Shipped" styleClass="colData">
+            <apex:column headerValue="Date Shipped" headerClass="headerStyle" styleClass="colData">
                 {!mail.dateShipped}
             </apex:column>
-            <apex:column headerValue="Shipping Status" styleClass="colData">
+            <apex:column headerValue="Shipping Status" headerClass="headerStyle" styleClass="colData">
                 {!mail.shipStatus}
             </apex:column>
 
@@ -48,18 +49,18 @@
         <br/><br/><br/>
         <br/><br/><br/>
 
-        <apex:outputText> Recently Updated Tickets Packages</apex:outputText> 
+        <apex:outputText > Recently Updated Tickets Packages</apex:outputText> 
         <apex:dataTable value="{!ticketList}" var="ticket" id="TicketTable" styleClass="table" headerClass="colHeader" width="100%">
-            <apex:column headerValue="Ticket Number" styleClass="colData">
+            <apex:column headerValue="Ticket Number" headerClass="headerStyle" styleClass="colData">
                 <!-- TODO: update this with ticket update page-->
                 <apex:outputLink value="https://postalexperience-developer-edition.na156.force.com/s/detail/{!ticket.ticketId}">
                 {!ticket.ticketName}
                 </apex:outputLink>
             </apex:column>
-            <apex:column headerValue="Last Modified By" styleClass="colData">
+            <apex:column headerValue="Last Modified By" headerClass="headerStyle" styleClass="colData">
                 {!ticket.lastModifiedBy}
             </apex:column>
-            <apex:column headerValue="Last Modified Date" styleClass="colData">
+            <apex:column headerValue="Last Modified Date" headerClass="headerStyle" styleClass="colData">
                 {!ticket.lastModifiedDate}
             </apex:column>
         </apex:dataTable>
