@@ -1,0 +1,15 @@
+<apex:page standardController="Case" lightningStylesheets="true">
+    <apex:form >
+        <apex:pageBlock title="Create Ticket">
+            <apex:pageBlockSection columns="1" >
+                <apex:inputField value="{!Case.ContactId}"/>
+                <apex:inputField value="{!Case.Origin}"/>
+                <apex:inputField value="{!Case.Subject}"/>
+                <apex:inputField value="{!Case.Web_Comments__c}" label="Comments" />
+            </apex:pageBlockSection>
+            <apex:pageBlockbuttons >
+                <apex:commandButton action="{!quicksave}" value="Save"  />
+            </apex:pageBlockbuttons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,15 @@
+<apex:page standardController="Mail__c" extensions="Mail_Extension">
+  <apex:form >
+    <apex:pageBlock title="My Content" mode="edit">
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Submit Lost Package Claim" action="{!SubmitApproval}" />
+        </apex:pageBlockButtons>
+      <apex:pageBlockSection title="My Content Section" columns="2">
+        <apex:outputField value="{!Mail__c.Name}"/>
+        <apex:outputField value="{!Mail__c.Full_Address__c}"/>
+        <apex:outputField value="{!Mail__c.createdDate}"/>
+        <apex:outputField value="{!Mail__c.delivery_status__c}"/>
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,73 @@
+<!-- TODOs: 
+    [x] Add Welcome based on $User
+    [x] Implement searchBar in toolbar for package
+    [x] Show next arriving package(s?)
+    [x] Show open tickets and most recent updates
+    [x] Create HomePage Controller
+    [] Optimize Results and possibly add limits for homepage
+    [] Create Testing 
+-->
+
+
+<apex:page id="thePage" lightningStylesheets="true"  controller="HomePage_CC">
+
+    <!-- For Internal Styling -->
+    <style type = "text/css">
+        
+        .colHeader {font-size: 18px; text-align: left; background: lightskyblue; border: 1px solid black}
+        .colData {font-size: 16px; text-align: left; width: 30%; border: 1px solid black}
+        .table {font-size: 16px; text-align: left; width: 100%; border: 1px solid black}
+        header {font-size: 24px; text-align: center; height: 100px; background: rgb(59, 78, 243); padding-top: 1px} 
+        body {background-color: lightblue;}
+    </style>
+
+
+    <!-- Welcome user -->
+    <apex:pageBlock title="Welcome back {!$User.LastName}!">
+        <br/><br/><br/>
+        <apex:outputText> Recent Shipped Packages</apex:outputText> 
+        <!--Ticket Related List -->
+        <apex:dataTable value="{!mailList}" var="mail" id="MailTable" styleClass="table" headerClass="colHeader" width="100%">
+            <apex:column headerValue="Package" styleClass="colData">
+                <!-- TODO: update this with packaged update page-->
+                <apex:outputLink value="https://postalexperience-developer-edition.na156.force.com/s/packages/record?id={!mail.mailid}">
+                {!mail.name}
+                </apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="Address" styleClass="colData">
+                {!mail.address}
+            </apex:column>
+            <apex:column headerValue="Date Shipped" styleClass="colData">
+                {!mail.dateShipped}
+            </apex:column>
+            <apex:column headerValue="Shipping Status" styleClass="colData">
+                {!mail.shipStatus}
+            </apex:column>
+
+        </apex:dataTable>
+        <br/><br/><br/>
+        <br/><br/><br/>
+
+        <apex:outputText> Recently Updated Tickets Packages</apex:outputText> 
+        <apex:dataTable value="{!ticketList}" var="ticket" id="TicketTable" styleClass="table" headerClass="colHeader" width="100%">
+            <apex:column headerValue="Ticket Number" styleClass="colData">
+                <!-- TODO: update this with ticket update page-->
+                <apex:outputLink value="https://postalexperience-developer-edition.na156.force.com/s/detail/{!ticket.ticketId}">
+                {!ticket.ticketName}
+                </apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="Last Modified By" styleClass="colData">
+                {!ticket.lastModifiedBy}
+            </apex:column>
+            <apex:column headerValue="Last Modified Date" styleClass="colData">
+                {!ticket.lastModifiedDate}
+            </apex:column>
+        </apex:dataTable>
+    </apex:pageBlock>
+
+
+    <!-- Related lists -->
+
+
+
+</apex:page>

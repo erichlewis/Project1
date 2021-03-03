@@ -1,0 +1,2 @@
+<apex:page standardController="Mail__c" >
+</apex:page>

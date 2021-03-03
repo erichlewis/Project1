@@ -1,0 +1,66 @@
+<apex:page standardController="Mail__c" recordSetVar="packages" extensions="Mail_Extension">
+    <apex:form >
+        <apex:pageBlock id="test">
+            <apex:pageMessages />
+            <apex:pageBlock >
+                <table style="width: 100%"> <tr>
+                    <td>
+                        <apex:panelGrid columns="2">
+                            <apex:outputLabel value="View:"/>
+                            <apex:selectList value="{!listView}" size="1">
+                                <apex:actionSupport event="onchange" action="{!filterMail}" rerender="pack_table"/>
+                                <apex:selectOptions value="{!Views}" />
+                            </apex:selectList>
+                        </apex:panelGrid>
+                    </td>
+                    <td style="text-align:right">
+                        <apex:inputText id="theInputText" value="{!trackingNumber}" />
+                        <apex:commandButton value="Search" action="{!searchMail}" id="SearchButton" reRender="test"/>
+                    </td>
+                </tr></table>
+            </apex:pageBlock>
+
+ 
+            <apex:pageBlockTable value="{!testMailList}" var="pack" id="pack_table">
+                <apex:column headerValue="Package ID">
+                    <apex:outputLink value="https://postalexperience-developer-edition.na156.force.com/s/packages/record?id={!pack.id}"> {!pack.name} </apex:outputLink>
+                </apex:column>
+                <apex:column headerValue="Shipped To">
+                    <apex:outputField value="{!pack.Full_Address__c}"/>
+                </apex:column>
+                <apex:column headerValue="Date Shipped">
+                    <apex:outputField value="{!pack.createdDate}"/>
+                </apex:column>
+                <apex:column headerValue="Current Status">
+                    <apex:outputField value="{!pack.delivery_status__c}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        Page: <apex:outputText value=" {!PageNumber} of {! CEILING(ResultSize / PageSize) }"/>
+                    </td>
+                    <td align="center">
+                        <apex:commandLink action="{! Previous }" value="« Previous"
+                                          rendered="{! HasPrevious }"/>
+                        <apex:outputText style="color: #ccc;" value="« Previous"
+                                         rendered="{! NOT(HasPrevious) }"/>
+                        &nbsp;&nbsp;
+                        <apex:commandLink action="{! Next }" value="Next »"
+                                          rendered="{! HasNext }"/>
+                        <apex:outputText style="color: #ccc;" value="Next »"
+                                         rendered="{! NOT(HasNext) }"/>
+                    </td>
+                    <td align="right">
+                        Records per page:
+                        <apex:selectList value="{! PageSize }" size="1">
+                            <apex:selectOption itemValue="5" itemLabel="5"/>
+                            <apex:selectOption itemValue="10" itemLabel="10"/>
+                            <apex:selectOption itemValue="20" itemLabel="20"/>
+                            <apex:actionSupport event="onchange" reRender="pack_table"/>
+                        </apex:selectList>
+                    </td>
+                </tr></table>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
