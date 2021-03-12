@@ -48,7 +48,7 @@ postal service application.</p>
 </ul>
 </body>
 
-<h2> Contributors </h2>
+<h2> License </h2>
   <p>
     This project uses the following license: <a href="https://www.salesforce.com/content/dam/web/en_us/www/documents/legal/Agreements/policies/ExternalFacing_Services_Policy.pdf">Acceptable Use and External-Facing Services Policy</a>
   </p>
